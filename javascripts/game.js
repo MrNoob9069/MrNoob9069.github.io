@@ -424,11 +424,11 @@ function updateMoney() {
 function updateCoinPerSec() {
     var element = document.getElementById("coinsPerSec");
     if (player.currentChallenge == "challenge3" || player.currentChallenge == "postc1") {
-      element.textContent = 'You are getting ' + shortenDimensions(getDimensionProductionPerSecond(1).times(player.chall3Pow)) + ' antimatter per second.'
+      element.textContent = 'You are getting ' + shortenDimensions(getDimensionProductionPerSecond(1).times(player.chall3Pow)) + ' Matter per second.'
     } else if (player.currentChallenge == "challenge7") {
-      element.textContent = 'You are getting ' + (shortenDimensions(getDimensionProductionPerSecond(1).plus(getDimensionProductionPerSecond(2)))) + ' antimatter per second.'
+      element.textContent = 'You are getting ' + (shortenDimensions(getDimensionProductionPerSecond(1).plus(getDimensionProductionPerSecond(2)))) + ' Matter per second.'
     } else {
-      element.textContent = 'You are getting ' + shortenDimensions(getDimensionProductionPerSecond(1)) + ' antimatter per second.'
+      element.textContent = 'You are getting ' + shortenDimensions(getDimensionProductionPerSecond(1)) + ' Matter per second.'
     }
 }
 
@@ -560,9 +560,9 @@ function updateDimensions() {
         if (player.timestudy.studies.includes(225)) extraGals += Math.floor(player.replicanti.amount.e / 1000)
         if (player.timestudy.studies.includes(226)) extraGals += Math.floor(player.replicanti.gal / 15)
         var galString = ""
-        if (player.galaxies >= 800) galString += "Remote Antimatter Galaxies (";
-        else if (player.galaxies >= getGalaxyCostScalingStart() || player.currentEternityChall === "eterc5") galString += "Distant Antimatter Galaxies (";
-        else galString += "Antimatter Galaxies (";
+        if (player.galaxies >= 800) galString += "Remote Matter Galaxies (";
+        else if (player.galaxies >= getGalaxyCostScalingStart() || player.currentEternityChall === "eterc5") galString += "Distant Matter Galaxies (";
+        else galString += "Matter Galaxies (";
         galString += player.galaxies;
         if (extraGals > 0) galString += " + "+extraGals;
         if (player.dilation.freeGalaxies > 0) galString += " + "+player.dilation.freeGalaxies;
@@ -614,9 +614,9 @@ function updateDimensions() {
     }
 
     if (document.getElementById("stats").style.display == "block" && document.getElementById("statistics").style.display == "block") {
-        document.getElementById("totalmoney").textContent = 'You have made a total of ' + shortenMoney(player.totalmoney) + ' antimatter.'
+        document.getElementById("totalmoney").textContent = 'You have made a total of ' + shortenMoney(player.totalmoney) + ' Matter.'
         document.getElementById("totalresets").textContent = 'You have done ' + player.resets + ' dimensional boosts/shifts.'
-        document.getElementById("galaxies").textContent = 'You have ' + Math.round(player.galaxies) + ' Antimatter Galaxies.'
+        document.getElementById("galaxies").textContent = 'You have ' + Math.round(player.galaxies) + ' Matter Galaxies.'
         document.getElementById("totalTime").textContent = "You have played for " + timeDisplay(player.totalTimePlayed) + "."
 
         if (player.eternities == 0) {
@@ -675,7 +675,7 @@ function updateDimensions() {
     if (document.getElementById("dilation").style.display == "block") {
         if (player.dilation.active) {
             if (Math.pow(Decimal.log10(player.money) / 400, 1.5) * (Math.pow(3, player.dilation.rebuyables[3])) - player.dilation.totalTachyonParticles <= 0) {
-                document.getElementById("enabledilation").innerHTML = "Disable dilation.<br>Reach " + shortenMoney(Decimal.pow(10, Math.pow(player.dilation.tachyonParticles * Math.pow(400, 1.5) / Math.pow(3, player.dilation.rebuyables[3]), 2/3))) + " antimatter to gain more Tachyon Particles."
+                document.getElementById("enabledilation").innerHTML = "Disable dilation.<br>Reach " + shortenMoney(Decimal.pow(10, Math.pow(player.dilation.tachyonParticles * Math.pow(400, 1.5) / Math.pow(3, player.dilation.rebuyables[3]), 2/3))) + " Matter to gain more Tachyon Particles."
             } else {
                 document.getElementById("enabledilation").textContent = "Disable dilation."
             }
@@ -1247,7 +1247,7 @@ function updateInfCosts() {
         else document.getElementById("ec5unl").innerHTML = "Eternity Challenge 5<span>Cost: 130 Time Theorems"
         if (player.etercreq !== 6) document.getElementById("ec6unl").innerHTML = "Eternity Challenge 6<span>Requirement: "+(40+(ECTimesCompleted("eterc6")*5))+" replicanti galaxies<span>Cost: 85 Time Theorems"
         else document.getElementById("ec6unl").innerHTML = "Eternity Challenge 6<span>Cost: 85 Time Theorems"
-        if (player.etercreq !== 7) document.getElementById("ec7unl").innerHTML = "Eternity Challenge 7<span>Requirement: "+shortenCosts(new Decimal("1e500000").times(new Decimal("1e300000").pow(ECTimesCompleted("eterc7"))))+" antimatter <span>Cost: 115 Time Theorems"
+        if (player.etercreq !== 7) document.getElementById("ec7unl").innerHTML = "Eternity Challenge 7<span>Requirement: "+shortenCosts(new Decimal("1e500000").times(new Decimal("1e300000").pow(ECTimesCompleted("eterc7"))))+" Matter <span>Cost: 115 Time Theorems"
         else document.getElementById("ec7unl").innerHTML = "Eternity Challenge 7<span>Cost: 115 Time Theorems"
         if (player.etercreq !== 8) document.getElementById("ec8unl").innerHTML = "Eternity Challenge 8<span>Requirement: "+shortenCosts(new Decimal("1e4000").times(new Decimal("1e1000").pow(ECTimesCompleted("eterc8"))))+" IP <span>Cost: 115 Time Theorems"
         else document.getElementById("ec8unl").innerHTML = "Eternity Challenge 8<span>Cost: 115 Time Theorems"
@@ -1831,8 +1831,8 @@ document.getElementById("load").onclick = function () {
 	for (var i = 0; i < 3; i++) {
 		var _break = player.break;
         player.break = true;
-        if (currentSave === i) document.querySelector("#save" + (i + 1) + " .save_antimatter").textContent = "Antimatter: " + shortenMoney(player.money);
-        else document.querySelector("#save" + (i + 1) + " .save_antimatter").textContent = "Antimatter: " + shortenMoney(saves[i] ? new Decimal(saves[i].money) : 10);
+        if (currentSave === i) document.querySelector("#save" + (i + 1) + " .save_Matter").textContent = "Matter: " + shortenMoney(player.money);
+        else document.querySelector("#save" + (i + 1) + " .save_Matter").textContent = "Matter: " + shortenMoney(saves[i] ? new Decimal(saves[i].money) : 10);
 		player.break = _break;
 	}
 
@@ -2043,27 +2043,27 @@ function setAchieveTooltip() {
     let thinking = document.getElementById("Now you're thinking with dilation!")
     let thisis = document.getElementById("This is what I have to do to get rid of you.")
 
-    apocAchieve.setAttribute('ach-tooltip', "Get over " + formatValue(player.options.notation, 1e80, 0, 0) + " antimatter.");
+    apocAchieve.setAttribute('ach-tooltip', "Get over " + formatValue(player.options.notation, 1e80, 0, 0) + " Matter.");
     noPointAchieve.setAttribute('ach-tooltip', "Buy a single First Dimension when you have over " + formatValue(player.options.notation, 1e150, 0, 0) + " of them. Reward: First Dimensions are 10% stronger.");
     forgotAchieve.setAttribute('ach-tooltip', "Get any Dimension multiplier over " + formatValue(player.options.notation, 1e31, 0, 0)) + ". Reward: First Dimensions are 5% stronger.";
-    sanic.setAttribute('ach-tooltip', "Have antimatter/sec exceed your current antimatter above " + formatValue(player.options.notation, 1e63, 0, 0));
+    sanic.setAttribute('ach-tooltip', "Have Matter/sec exceed your current Matter above " + formatValue(player.options.notation, 1e63, 0, 0));
     potato.setAttribute('ach-tooltip', "Get more than " + formatValue(player.options.notation, 1e29, 0, 0) + " ticks per second. Reward: Reduces starting tick interval by 2%.");
     potato2.setAttribute('ach-tooltip', "Get more than " + formatValue(player.options.notation, 1e58, 0, 0) + " ticks per second. Reward: Reduces starting tick interval by 2%.");
     potato3.setAttribute('ach-tooltip', "Get more than "+shortenCosts(new Decimal("1e8296262"))+" ticks per second.")
     dimensional.setAttribute('ach-tooltip', "Reach " + formatValue(player.options.notation, 1e12, 0, 0) + " of all dimensions except 8th.");
     IPBelongs.setAttribute('ach-tooltip', "Big Crunch for "+shortenCosts(1e150)+" IP. Reward: Additional 4x multiplier to IP.")
     reference.setAttribute('ach-tooltip', "Get a x"+shortenDimensions(Number.MAX_VALUE)+" multiplier in a single sacrifice. Reward: Sacrifices are stronger.")
-    blink.setAttribute('ach-tooltip', "Get to Infinity in under 200 milliseconds. Reward: Start with " + formatValue(player.options.notation, 1e25, 0, 0) + " antimatter and all dimensions are stronger in first 300ms of Infinity.");
-    spare.setAttribute('ach-tooltip', "Reach " +formatValue(player.options.notation, new Decimal("1e35000"), 0, 0)+" antimatter. Reward: Dimensions are more powerful the more unspent antimatter you have.");
-    //exist.setAttribute('ach-tooltip', "Reach " + formatValue(player.options.notation, 9.9999e9999, 0, 0) + " antimatter. Reward: Dimensions are more powerful the more unspent antimatter you have."); (i like the 9 9s thing and no one will see it with a formatted value)
-    //exist2.setAttribute('ach-tooltip', "Reach " + formatValue(player.options.notation, 1e35000, 0, 0) + " antimatter. Reward: Dimensions are more powerful the more unspent antimatter you have.")
+    blink.setAttribute('ach-tooltip', "Get to Infinity in under 200 milliseconds. Reward: Start with " + formatValue(player.options.notation, 1e25, 0, 0) + " Matter and all dimensions are stronger in first 300ms of Infinity.");
+    spare.setAttribute('ach-tooltip', "Reach " +formatValue(player.options.notation, new Decimal("1e35000"), 0, 0)+" Matter. Reward: Dimensions are more powerful the more unspent Matter you have.");
+    //exist.setAttribute('ach-tooltip', "Reach " + formatValue(player.options.notation, 9.9999e9999, 0, 0) + " Matter. Reward: Dimensions are more powerful the more unspent Matter you have."); (i like the 9 9s thing and no one will see it with a formatted value)
+    //exist2.setAttribute('ach-tooltip', "Reach " + formatValue(player.options.notation, 1e35000, 0, 0) + " Matter. Reward: Dimensions are more powerful the more unspent Matter you have.")
     speed.setAttribute('ach-tooltip', "Big Crunch for "+shortenCosts(1e200)+" IP in 2 seconds or less. Reward: All dimensions are significantly stronger in first 5 seconds of infinity.")
     speed2.setAttribute('ach-tooltip', "Big Crunch for "+shortenCosts(1e250)+" IP in 20 seconds or less. Reward: All dimensions are significantly stronger in first 60 seconds of infinity.")
     overdrive.setAttribute('ach-tooltip', "Big Crunch with " + shortenCosts(1e300) + " IP/min. Reward: Additional 4x multiplier to IP.")
     minute.setAttribute('ach-tooltip', "Reach " + shortenCosts(1e260) + " infinity power. Reward: Double infinity power gain.")
     infiniteIP.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e30008"))+" IP.")
     over9000.setAttribute('ach-tooltip', "Get a total sacrifice multiplier of "+shortenCosts(new Decimal("1e9000"))+". Reward: Sacrifice doesn't reset your dimensions.")
-    dawg.setAttribute('ach-tooltip', "Have all your past 10 infinities be at least "+shortenMoney(Number.MAX_VALUE)+" times higher IP than the previous one. Reward: Your antimatter doesn't reset on dimboost/galaxy.")
+    dawg.setAttribute('ach-tooltip', "Have all your past 10 infinities be at least "+shortenMoney(Number.MAX_VALUE)+" times higher IP than the previous one. Reward: Your Matter doesn't reset on dimboost/galaxy.")
     eatass.setAttribute('ach-tooltip', "Reach "+shortenCosts(1e100)+" IP without any infinities or first dimensions. Reward: IP multiplier based on time spent this infinity.")
     layer.setAttribute('ach-tooltip', "Reach "+shortenMoney(Number.MAX_VALUE)+" EP.")
     fkoff.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e22000"))+" IP without any time studies. Reward: Time dimensions are multiplied by the number of studies you have.")
@@ -4211,7 +4211,7 @@ function startDilatedEternity() {
         }, 250)
         return
     }
-    if (!confirm("Dilating time will start a new eternity, and all of your Dimension/Infinity Dimension/Time Dimension multiplier's exponents and tickspeed multiplier's exponent will be reduced to ^ 0.75. If you can eternity while dilated, you'll be rewarded with tachyon particles based on your antimatter and tachyon particles.")) {
+    if (!confirm("Dilating time will start a new eternity, and all of your Dimension/Infinity Dimension/Time Dimension multiplier's exponents and tickspeed multiplier's exponent will be reduced to ^ 0.75. If you can eternity while dilated, you'll be rewarded with tachyon particles based on your Matter and tachyon particles.")) {
         setTimeout(function() {
             gameLoopIntervalId = setInterval(gameLoop, player.options.updateRate);
         }, 250)
@@ -4858,7 +4858,7 @@ function gameLoop(diff) {
 
     if (nextAt[player.postChallUnlocked] === undefined) document.getElementById("nextchall").textContent = " "
     else if (!player.achievements.includes("r133")) {
-        document.getElementById("nextchall").textContent = "Next challenge unlocks at "+ shortenCosts(nextAt[player.postChallUnlocked]) + " antimatter."
+        document.getElementById("nextchall").textContent = "Next challenge unlocks at "+ shortenCosts(nextAt[player.postChallUnlocked]) + " Matter."
         while (player.money.gte(nextAt[player.postChallUnlocked]) && player.challenges.includes("postc8") === false && player.postChallUnlocked != 8) {
             if (player.postChallUnlocked != 8) player.postChallUnlocked += 1
             if (player.eternities > 6) player.challenges.push("postc"+player.postChallUnlocked)
@@ -5264,16 +5264,16 @@ function gameLoop(diff) {
             while (player.money.times(4.22419e-105).gt(scale1[id])) id++;
             if (id > 0) id--;
         }
-        if (id >= 7 && id < 11) document.getElementById("infoScale").textContent = "If every antimatter were a planck volume, you would have enough to fill " + formatValue(player.options.notation, player.money * 4.22419e-105 / scale1[id], 2, 1) + scale2[id];
-        else document.getElementById("infoScale").textContent = "If every antimatter were a planck volume, you would have enough to make " + formatValue(player.options.notation, player.money.times(4.22419e-105).dividedBy(scale1[id]), 2, 1) + scale2[id];
+        if (id >= 7 && id < 11) document.getElementById("infoScale").textContent = "If every Matter were a planck volume, you would have enough to fill " + formatValue(player.options.notation, player.money * 4.22419e-105 / scale1[id], 2, 1) + scale2[id];
+        else document.getElementById("infoScale").textContent = "If every Matter were a planck volume, you would have enough to make " + formatValue(player.options.notation, player.money.times(4.22419e-105).dividedBy(scale1[id]), 2, 1) + scale2[id];
     } else { //does this part work correctly? i doubt it does
-        if (player.money.times(1e-54) < 2.82e-45) document.getElementById("infoScale").textContent = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-54 / player.money, 2, 1) + " attometers cubed, you would have enough to make a proton."
-        else if (player.money * 1e-63 < 2.82e-45) document.getElementById("infoScale").textContent = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-63 / player.money, 2, 1) + " zeptometers cubed, you would have enough to make a proton."
-        else if (player.money * 1e-72 < 2.82e-45) document.getElementById("infoScale").textContent = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 1e-72 / player.money, 2, 1) + " yoctometers cubed, you would have enough to make a proton."
-        else document.getElementById("infoScale").textContent = "If every antimatter were " + formatValue(player.options.notation,2.82e-45 / 4.22419e-105 / player.money, 2, 1) + " planck volumes, you would have enough to make a proton."
+        if (player.money.times(1e-54) < 2.82e-45) document.getElementById("infoScale").textContent = "If every Matter were " + formatValue(player.options.notation,2.82e-45 / 1e-54 / player.money, 2, 1) + " attometers cubed, you would have enough to make a proton."
+        else if (player.money * 1e-63 < 2.82e-45) document.getElementById("infoScale").textContent = "If every Matter were " + formatValue(player.options.notation,2.82e-45 / 1e-63 / player.money, 2, 1) + " zeptometers cubed, you would have enough to make a proton."
+        else if (player.money * 1e-72 < 2.82e-45) document.getElementById("infoScale").textContent = "If every Matter were " + formatValue(player.options.notation,2.82e-45 / 1e-72 / player.money, 2, 1) + " yoctometers cubed, you would have enough to make a proton."
+        else document.getElementById("infoScale").textContent = "If every Matter were " + formatValue(player.options.notation,2.82e-45 / 4.22419e-105 / player.money, 2, 1) + " planck volumes, you would have enough to make a proton."
     }
     if (player.money.gt(new Decimal("1e100000"))) {
-        document.getElementById("infoScale").innerHTML = "<br>If you wrote 3 numbers a second, it would take you <br>" + timeDisplay(player.money.log10()*10/3) + "<br> to write down your antimatter amount.";
+        document.getElementById("infoScale").innerHTML = "<br>If you wrote 3 numbers a second, it would take you <br>" + timeDisplay(player.money.log10()*10/3) + "<br> to write down your Matter amount.";
     }
 
     var shiftRequirement = getShiftRequirement(0);
@@ -5320,7 +5320,7 @@ function gameLoop(diff) {
         infdimpurchasewhileloop = 1;
     }
 
-    document.getElementById("newDimensionButton").textContent = "Get " + shortenCosts(getNewInfReq()) + " antimatter to unlock a new Dimension."
+    document.getElementById("newDimensionButton").textContent = "Get " + shortenCosts(getNewInfReq()) + " Matter to unlock a new Dimension."
 
     document.getElementById("sacrifice").setAttribute('ach-tooltip', "Boosts 8th Dimension by " + formatValue(player.options.notation, calcSacrificeBoost(), 2, 2) + "x");
 
@@ -5361,7 +5361,7 @@ function simulateTime(seconds, real) {
         if (real) console.log(ticksDone)
     }
     var popupString = "While you were away"
-    if (player.money.gt(playerStart.money)) popupString+= ",<br> your antimatter increased "+shortenMoney(player.money.log10() - (playerStart.money).log10())+" orders of magnitude"
+    if (player.money.gt(playerStart.money)) popupString+= ",<br> your Matter increased "+shortenMoney(player.money.log10() - (playerStart.money).log10())+" orders of magnitude"
     if (player.infinityPower.gt(playerStart.infinityPower)) popupString+= ",<br> infinity power increased "+shortenMoney(player.infinityPower.log10() - (Decimal.max(playerStart.infinityPower, 1)).log10())+" orders of magnitude"
     if (player.timeShards.gt(playerStart.timeShards)) popupString+= ",<br> time shards increased "+shortenMoney(player.timeShards.log10() - (Decimal.max(playerStart.timeShards, 1)).log10())+" orders of magnitude"
     if (player.infinitied > playerStart.infinitied || player.eternities > playerStart.eternities) popupString+= ","
