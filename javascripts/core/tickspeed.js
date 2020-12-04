@@ -26,7 +26,7 @@ function getTickSpeedMultiplier() {
   } else {
       let baseMultiplier = 0.8
       if (player.currentChallenge == "challenge6" || player.currentChallenge == "postc1") baseMultiplier = 0.83
-      let perGalaxy = 0.965
+      let perGalaxy = 0.95
       let galaxies = player.galaxies-2+player.replicanti.galaxies+player.dilation.freeGalaxies
       if (player.timestudy.studies.includes(133)) galaxies += player.replicanti.galaxies/2
       if (player.timestudy.studies.includes(132)) galaxies += player.replicanti.galaxies*0.4
