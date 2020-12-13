@@ -1002,7 +1002,7 @@ document.getElementById("infiMult").onclick = function() {
         player.infinityPoints = player.infinityPoints.minus(player.infMultCost)
         player.infMult = player.infMult.times(2);
         player.autoIP = player.autoIP.times(2);
-        player.infMultCost = player.infMultCost.times(9)
+        player.infMultCost = player.infMultCost.times(4)
         document.getElementById("infiMult").innerHTML = "Multiply infinity points from all sources by 2 <br>currently: "+shorten(player.infMult.times(kongIPMult)) +"x<br>Cost: "+shortenCosts(player.infMultCost)+" IP"
         if (player.autobuyers[11].priority !== undefined && player.autobuyers[11].priority !== null && player.autoCrunchMode == "amount") player.autobuyers[11].priority = player.autobuyers[11].priority.times(2);
         if (player.autoCrunchMode == "amount") document.getElementById("priority12").value = formatValue("Scientific", player.autobuyers[11].priority, 2, 0);
@@ -4927,7 +4927,7 @@ function gameLoop(diff) {
         var dif = player.infinityPoints.e - player.infMultCost.e +1
         if (dif > 0) {
             player.infMult = player.infMult.times(Decimal.pow(2, dif))
-            player.infMultCost = player.infMultCost.times(Decimal.pow(10, dif))
+            player.infMultCost = player.infMultCost.times(Decimal.pow(4, dif))
             document.getElementById("infiMult").innerHTML = "Multiply infinity points from all sources by 2 <br>currently: "+shorten(player.infMult.times(kongIPMult)) +"x<br>Cost: "+shortenCosts(player.infMultCost)+" IP"
             player.infinityPoints = player.infinityPoints.minus(player.infMultCost.dividedBy(10))
             if (player.autobuyers[11].priority !== undefined && player.autobuyers[11].priority !== null && player.autoCrunchMode == "amount") player.autobuyers[11].priority = player.autobuyers[11].priority.times(Decimal.pow(2, dif));
