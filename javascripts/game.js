@@ -3272,7 +3272,7 @@ function eternity(force, auto) {
             timeDimension7: player.timeDimension7,
             timeDimension8: player.timeDimension8,
             eternityPoints: player.eternityPoints,
-            eternities: player.eternities+1,
+            eternities: player.eternities+20,
             thisEternity: 0,
             bestEternity: player.bestEternity,
             eternityUpgrades: player.eternityUpgrades,
