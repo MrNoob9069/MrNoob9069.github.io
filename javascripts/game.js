@@ -4924,7 +4924,7 @@ function gameLoop(diff) {
 
 
     if (player.infMultBuyer) {
-        var dif = Math.floor(player.infinityPoints.div(player.infMultCost)) +1
+        var dif = player.infinityPoints.e - player.infMultCost.e +1
         if (dif > 0) {
             player.infMult = player.infMult.times(Decimal.pow(2, dif))
             player.infMultCost = player.infMultCost.times(Decimal.pow(4, dif))
